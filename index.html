@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosphil Fashion & Beauty Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles for typography and animations */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfcfb; /* A slightly warmer off-white */
+            color: #1a202c; /* Darker text for better contrast */
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x800/4a5568/a0aec0?text=Mosphil+Fashion');
+            background-size: cover;
+            background-position: center;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            transition: transform 0.3s ease-in-out;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        /* Animation styles */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered animation delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <!-- === Header & Hero Section === -->
+    <header class="hero-bg text-white shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-playfair text-2xl md:text-3xl font-bold tracking-tight">Mosphil</a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-6 text-lg font-semibold">
+                <a href="#about" class="hover:text-amber-400 transition-colors duration-300">About Us</a>
+                <a href="#collections" class="hover:text-amber-400 transition-colors duration-300">Collections</a>
+                <a href="#contact" class="hover:text-amber-400 transition-colors duration-300">Contact</a>
+                <a href="https://wa.me/2347067325928" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out text-sm">
+                    Chat on WhatsApp
+                </a>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-slate-900 text-white py-4">
+            <a href="#about" class="block py-2 px-6 text-center hover:bg-slate-800">About Us</a>
+            <a href="#collections" class="block py-2 px-6 text-center hover:bg-slate-800">Collections</a>
+            <a href="#contact" class="block py-2 px-6 text-center hover:bg-slate-800">Contact</a>
+            <a href="https://wa.me/2347067325928" target="_blank" class="block py-3 px-6 text-center bg-green-500 hover:bg-green-600 text-white mt-2">
+                Chat on WhatsApp
+            </a>
+        </div>
+
+        <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+            <h1 class="font-playfair text-4xl md:text-6xl font-bold mb-4 fade-in-up">Mosphil Fashion & Beauty Academy</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 fade-in-up delay-1">Crafting Elegance, One Stitch at a Time. Find your perfect style with our custom creations and exquisite fabrics.</p>
+            <a href="#collections" class="bg-white text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300 ease-in-out fade-in-up delay-2">
+                Explore Our Collections
+            </a>
+        </div>
+    </header>
+
+    <!-- === Main Content Sections === -->
+    <main class="container mx-auto px-6 py-20">
+
+        <!-- About Section -->
+        <section id="about" class="text-center mb-24">
+            <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-4 fade-in-up">Welcome to Mosphil</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 leading-relaxed fade-in-up delay-1">
+                At Mosphil Fashion & Beauty Academy, we believe in the power of personal style. We are your one-stop shop for high-quality fabrics, expert tailoring services, and a stunning collection of ready-to-wear fashion, bags, and shoes. Our mission is to help you express your unique identity with confidence and grace.
+            </p>
+        </section>
+
+        <!-- Collections Section -->
+        <section id="collections">
+            <h2 class="font-playfair text-3xl md:text-4xl font-bold text-center mb-12 fade-in-up">Our Exquisite Collections</h2>
+
+            <!-- Bag Collection -->
+            <div class="mb-24">
+                <h3 class="font-playfair text-2xl md:text-3xl font-bold text-center mb-8 fade-in-up delay-1">Handcrafted Bags</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Bag 1: Data attributes for modal content -->
+                    <div class="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300 fade-in-up delay-2 cursor-pointer product-card"
+                         data-image-src="https://placehold.co/600x800/d4af37/ffffff?text=The+Classic+Tote"
+                         data-title="The Classic Tote"
+                         data-description="This timeless tote bag is crafted from premium leather with a minimalist design. It's spacious and durable, perfect for daily use or a weekend getaway.">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x800/d4af37/ffffff?text=The+Classic+Tote" alt="A classic tote bag with clean lines and a durable finish." class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="p-6 text-center"><h4 class="font-playfair text-2xl font-bold mb-2">The Classic Tote</h4></div>
+                    </div>
+                    <!-- Bag 2 -->
+                    <div class="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300 fade-in-up delay-3 cursor-pointer product-card"
+                         data-image-src="https://placehold.co/600x800/334155/ffffff?text=The+Evening+Clutch"
+                         data-title="The Evening Clutch"
+                         data-description="An elegant clutch bag, adorned with subtle beadwork, perfect for adding a touch of sophistication to any formal event or evening wear.">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x800/334155/ffffff?text=The+Evening+Clutch" alt="An elegant clutch bag, perfect for formal events and evening wear." class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="p-6 text-center"><h4 class="font-playfair text-2xl font-bold mb-2">The Evening Clutch</h4></div>
+                    </div>
+                    <!-- Bag 3 -->
+                    <div class="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300 fade-in-up delay-4 cursor-pointer product-card"
+                         data-image-src="https://placehold.co/600x800/b91c1c/ffffff?text=The+Chic+Crossbody"
+                         data-title="The Chic Crossbody"
+                         data-description="A versatile and stylish crossbody bag with a modern design and adjustable strap. It's the perfect accessory for a day out in the city.">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x800/b91c1c/ffffff?text=The+Chic+Crossbody" alt="A chic crossbody bag with a modern design and adjustable strap." class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="p-6 text-center"><h4 class="font-playfair text-2xl font-bold mb-2">The Chic Crossbody</h4></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fabric Collection -->
+            <div>
+                <h3 class="font-playfair text-2xl md:text-3xl font-bold text-center mb-8 fade-in-up">Premium Fabrics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Fabric 1 -->
+                    <div class="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300 fade-in-up delay-1 cursor-pointer product-card"
+                         data-image-src="https://placehold.co/600x800/be185d/ffffff?text=Ankara+Wax+Print"
+                         data-title="Ankara Wax Print"
+                         data-description="Our vibrant Ankara wax prints are made from 100% cotton, offering bold colors and patterns perfect for traditional or modern styles.">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x800/be185d/ffffff?text=Ankara+Wax+Print" alt="Vibrant Ankara wax print fabric with a traditional pattern." class="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="p-6 text-center"><h4 class="font-playfair text-xl font-bold mb-2">Ankara Wax Print</h4></div>
+                    </div>
+                    <!-- Fabric 2 -->
+                    <div class="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300 fade-in-up delay-2 cursor-pointer product-card"
+                         data-image-src="https://placehold.co/600x800/047857/ffffff?text=French+Lace"
+                         data-title="French Lace"
+                         data-description="Experience luxury with our delicate French lace fabrics. Their intricate designs and fine craftsmanship are ideal for elegant evening gowns and bridal wear.">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x800/047857/ffffff?text=French+Lace" alt="Delicate French lace fabric with intricate floral designs." class="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="p-6 text-center"><h4 class="font-playfair text-xl font-bold mb-2">French Lace</h4></div>
+                    </div>
+                    <!-- Fabric 3 -->
+                    <div class="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300 fade-in-up delay-3 cursor-pointer product-card"
+                         data-image-src="https://placehold.co/600x800/4338ca/ffffff?text=Adire+Silk"
+                         data-title="Adire Silk"
+                         data-description="This traditional Adire silk fabric features stunning hand-dyed patterns. Its smooth texture and rich colors are perfect for creating sophisticated and unique garments.">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x800/4338ca/ffffff?text=Adire+Silk" alt="Smooth Adire silk fabric dyed in deep, rich colors." class="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="p-6 text-center"><h4 class="font-playfair text-xl font-bold mb-2">Adire Silk</h4></div>
+                    </div>
+                    <!-- Fabric 4 -->
+                    <div class="bg-white rounded-lg shadow-xl overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300 fade-in-up delay-4 cursor-pointer product-card"
+                         data-image-src="https://placehold.co/600x800/c2410c/ffffff?text=Guinea+Brocade"
+                         data-title="Guinea Brocade"
+                         data-description="Our high-quality Guinea brocade is known for its exquisite texture and shimmer. It's the ideal choice for creating magnificent traditional attire and celebratory outfits.">
+                        <div class="overflow-hidden"><img src="https://placehold.co/600x800/c2410c/ffffff?text=Guinea+Brocade" alt="Shiny Guinea brocade fabric with a distinctive woven pattern." class="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500"></div>
+                        <div class="p-6 text-center"><h4 class="font-playfair text-xl font-bold mb-2">Guinea Brocade</h4></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white rounded-lg shadow-2xl p-8 md:p-12 text-center border-t-4 border-amber-400 mt-24">
+            <h2 class="font-playfair text-3xl md:text-4xl font-bold mb-4 fade-in-up">Get in Touch</h2>
+            <p class="max-w-xl mx-auto text-gray-600 mb-8 fade-in-up delay-1">
+                Ready to place an order or have a question? Contact us directly. We're always happy to help you with your fashion needs!
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-8 fade-in-up delay-2">
+                <!-- Phone -->
+                <div class="flex items-center bg-gray-100 p-4 rounded-lg">
+                    <i class="fas fa-phone text-amber-600 mr-3 text-lg"></i>
+                    <span class="text-lg font-semibold text-gray-800">+234 706 732 5928</span>
+                </div>
+                <!-- Email -->
+                <div class="flex items-center bg-gray-100 p-4 rounded-lg">
+                    <i class="fas fa-envelope text-amber-600 mr-3 text-lg"></i>
+                    <a href="mailto:podekhe@gmail.com" class="text-lg font-semibold text-gray-800 hover:underline">podekhe@gmail.com</a>
+                </div>
+            </div>
+            <a href="https://wa.me/2347067325928" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 fade-in-up delay-3">
+                Chat on WhatsApp
+            </a>
+        </section>
+
+    </main>
+
+    <!-- === Floating WhatsApp Button === -->
+    <a href="https://wa.me/2347067325928" target="_blank" class="whatsapp-button bg-green-500 p-4 rounded-full shadow-lg flex items-center justify-center">
+        <i class="fab fa-whatsapp text-white text-3xl"></i>
+    </a>
+
+    <!-- === Footer === -->
+    <footer class="bg-gray-900 text-gray-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2024 Mosphil Fashion & Beauty Academy. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- === Image Modal & Scripts === -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center p-4 z-50 transition-opacity duration-300">
+        <div class="bg-white rounded-lg shadow-2xl overflow-hidden max-w-4xl w-full mx-auto p-6 md:p-8 relative">
+            <button id="close-modal-btn" class="absolute top-4 right-6 text-gray-600 text-3xl font-bold cursor-pointer hover:text-gray-900">&times;</button>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <img id="modal-image" src="" alt="Enlarged product view" class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center">
+                    <h3 id="modal-title" class="font-playfair text-3xl font-bold mb-4">Product Title</h3>
+                    <p id="modal-description" class="text-gray-600 mb-6">Product Description</p>
+                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="inline-block w-full text-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                        Enquire about this Item
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Product Modal Functionality ---
+            const productModal = document.getElementById('product-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const imageSrc = this.getAttribute('data-image-src');
+                    const title = this.getAttribute('data-title');
+                    const description = this.getAttribute('data-description');
+                    const whatsappLink = `https://wa.me/2347067325928?text=Hello,%20I%20am%20interested%20in%20the%20${encodeURIComponent(title)}.%20Can%20you%20please%20provide%20more%20details?`;
+                    
+                    modalImage.src = imageSrc;
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+                    modalWhatsappBtn.href = whatsappLink;
+
+                    productModal.classList.remove('hidden');
+                    productModal.classList.add('flex');
+                });
+            });
+
+            const hideModal = () => {
+                productModal.classList.add('hidden');
+                productModal.classList.remove('flex');
+            };
+
+            closeModalBtn.addEventListener('click', hideModal);
+            productModal.addEventListener('click', (e) => {
+                if (e.target === productModal) {
+                    hideModal();
+                }
+            });
+
+            // --- Scroll Animation Functionality ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- Smooth scrolling for nav links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
