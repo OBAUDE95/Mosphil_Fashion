@@ -3,32 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mosphil Products Catalog</title>
+    <title>Mosphil Fashion Academy</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* A more sophisticated and robust design theme */
+        /* Custom CSS variables for brand colors */
+        :root {
+            --primary-green: #004d40;
+            --background-off-white: #f9f9f9;
+            --accent-gold: #d4af37;
+            --text-dark: #2c3e50;
+        }
+
+        /* Base styles for a professional and modern look */
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f8f8f8; /* A light, clean background */
-            color: #2c3e50; /* Dark blue-gray for elegance */
+            font-family: 'Poppins', sans-serif; /* Primary font for body text */
+            background-color: var(--background-off-white);
+            color: var(--text-dark);
+            line-height: 1.6; /* Consistent line height for readability */
         }
-        .font-merriweather { font-family: 'Merriweather', serif; }
-        .accent-color { color: #d4af37; } /* A muted, elegant gold */
-        .bg-accent { background-color: #d4af37; }
-        .text-accent { color: #d4af37; }
 
-        /* Hero section with a dynamic, dark overlay */
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/2c3e50/ecf0f1?text=Product+Catalog');
+        /* Font classes for specific elements */
+        .font-playfair-display { font-family: 'Playfair Display', serif; }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+
+        /* Color classes */
+        .text-primary-green { color: var(--primary-green); }
+        .bg-primary-green { background-color: var(--primary-green); }
+        .text-accent-gold { color: var(--accent-gold); }
+        .bg-accent-gold { background-color: var(--accent-gold); }
+
+        /* Hero section styling */
+        .hero-section {
+            background-color: #e0e7e9; /* A soft, light background for the hero */
+            background-image: url('https://placehold.co/1920x600/e0e7e9/004d40?text=Mosphil+Fashion+Academy'); /* Optional subtle background image */
             background-size: cover;
             background-position: center;
             position: relative;
+            padding: 8rem 0; /* Ample padding for a grand feel */
         }
-        .hero-text { text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+        .hero-overlay {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent overlay for text readability */
+            padding: 4rem 0;
+        }
 
         /* Floating WhatsApp Button for easy access */
         .whatsapp-button {
@@ -60,7 +80,7 @@
             opacity: 1;
             transform: scale(1);
         }
-
+        
         /* Staggered animation delays */
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
@@ -73,7 +93,7 @@
         /* Consistent image aspect ratio and professional card design */
         .product-card-image {
             width: 100%;
-            height: 30rem; /* Taller images for a premium feel */
+            height: 25rem; /* Adjusted height for better grid balance */
             object-fit: cover;
             transition: transform 0.5s ease-in-out;
         }
@@ -102,287 +122,389 @@
             opacity: 1;
             transition: opacity 0.4s ease-in-out;
         }
+
+        /* General button styling */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px; /* Full rounded */
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #00332c; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn-accent {
+            background-color: var(--accent-gold);
+            color: var(--text-dark);
+        }
+        .btn-accent:hover {
+            background-color: #b89a2f; /* Darker gold on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- === Header & Hero Section === -->
-    <header class="hero-bg text-white shadow-xl">
-        <nav class="container mx-auto px-6 py-6 flex justify-between items-center">
-            <a href="#" class="font-merriweather text-3xl font-bold tracking-tight text-accent animate-fade-in-up">Mosphil</a>
+    <!-- === Header & Navigation === -->
+    <header class="sticky top-0 z-40 bg-white shadow-md py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Text-Based Branding -->
+            <div class="text-center md:text-left">
+                <h1 class="font-playfair-display text-4xl font-bold tracking-wide text-primary-green animate-fade-in-up">Mosphil Fashion Academy</h1>
+                <p class="text-lg text-gray-700 animate-fade-in-up delay-1">African Fashion Catalog & Sewing Training School</p>
+            </div>
             
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none animate-fade-in-up delay-1">
+            <button id="mobile-menu-button" class="md:hidden text-primary-green focus:outline-none animate-fade-in-up delay-1">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-8 text-lg font-semibold animate-fade-in-up delay-2">
-                <a href="#bags" class="hover:text-accent transition-colors duration-300">Bags</a>
-                <a href="#footwear" class="hover:text-accent transition-colors duration-300">Footwear</a>
-                <a href="#fabrics" class="hover:text-accent transition-colors duration-300">Fabrics</a>
-                <a href="https://wa.me/2347067325928" target="_blank" class="bg-accent hover:bg-yellow-500 text-gray-900 font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out text-sm">
-                    Chat on WhatsApp
+            <div class="hidden md:flex items-center space-x-8 text-lg font-poppins font-semibold animate-fade-in-up delay-2">
+                <a href="#home" class="hover:text-accent-gold transition-colors duration-300">Home</a>
+                <a href="#products" class="hover:text-accent-gold transition-colors duration-300">Products</a>
+                <a href="#training" class="hover:text-accent-gold transition-colors duration-300">Training</a>
+                <a href="https://wa.me/2347067325928" target="_blank" class="btn btn-accent text-sm">
+                    Contact Us
                 </a>
             </div>
-        </nav>
+        </div>
 
         <!-- Mobile Menu (Hidden by default) -->
         <div id="mobile-menu" class="md:hidden hidden bg-gray-900 text-white py-4">
-            <a href="#bags" class="block py-3 px-6 text-center hover:bg-gray-800 transition-colors">Bags</a>
-            <a href="#footwear" class="block py-3 px-6 text-center hover:bg-gray-800 transition-colors">Footwear</a>
-            <a href="#fabrics" class="block py-3 px-6 text-center hover:bg-gray-800 transition-colors">Fabrics</a>
-            <a href="https://wa.me/2347067325928" target="_blank" class="block py-3 px-6 text-center bg-accent hover:bg-yellow-500 text-gray-900 mt-2 rounded-full mx-6">
-                Chat on WhatsApp
+            <a href="#home" class="block py-3 px-6 text-center hover:bg-gray-800 transition-colors">Home</a>
+            <a href="#products" class="block py-3 px-6 text-center hover:bg-gray-800 transition-colors">Products</a>
+            <a href="#training" class="block py-3 px-6 text-center hover:bg-gray-800 transition-colors">Training</a>
+            <a href="https://wa.me/2347067325928" target="_blank" class="block py-3 px-6 text-center bg-accent-gold hover:bg-yellow-500 text-gray-900 mt-2 rounded-full mx-6">
+                Contact Us on WhatsApp
             </a>
         </div>
-
-        <div class="container mx-auto px-6 py-32 md:py-48 text-center hero-text">
-            <h1 class="font-merriweather text-5xl md:text-7xl font-extrabold mb-4 animate-scale-in">Our Product Catalog</h1>
-            <p class="text-xl md:text-2xl max-w-4xl mx-auto mb-10 animate-fade-in-up delay-1">
-                Explore our full range of handcrafted bags, elegant footwear, and premium fabrics.
-            </p>
-        </div>
     </header>
+
+    <!-- === Hero Section === -->
+    <section id="home" class="hero-section text-center">
+        <div class="hero-overlay">
+            <div class="container mx-auto px-6">
+                <h1 class="font-playfair-display text-5xl md:text-6xl font-extrabold mb-4 text-primary-green animate-scale-in">Explore Timeless African Fashion</h1>
+                <p class="text-xl md:text-2xl max-w-4xl mx-auto mb-10 text-gray-800 animate-fade-in-up delay-1">
+                    Discover handcrafted fashion pieces and enroll in our sewing training program to turn your creativity into skill.
+                </p>
+                <a href="https://wa.me/2347067325928?text=Hello,%20I%20would%20like%20to%20know%20more%20about%20Mosphil%20Fashion%20Academy." target="_blank" class="btn btn-primary animate-fade-in-up delay-2">
+                    Contact Us on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- === Main Content Sections === -->
     <main class="container mx-auto px-6 py-24">
 
-        <!-- Bags Section -->
-        <section id="bags" class="mb-32">
-            <h2 class="font-merriweather text-4xl md:text-5xl font-bold text-center mb-16 animate-fade-in-up">Handcrafted Bags</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <!-- Bag 1 -->
-                <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-2 cursor-pointer"
-                     data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag1.jpeg"
-                     data-title="Elegant Bag 1"
-                     data-description="A stylish and functional bag, perfect for any occasion.">
-                    <div class="overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag1.jpeg" alt="Elegant Bag 1" class="product-card-image">
+        <!-- Products Section (Anchor for navigation) -->
+        <section id="products" class="mb-32">
+            <h2 class="font-playfair-display text-4xl md:text-5xl font-bold text-center mb-16 animate-fade-in-up">Our Collections</h2>
+
+            <!-- Bags Section -->
+            <div id="bags" class="mb-24">
+                <h3 class="font-playfair-display text-3xl font-bold text-center mb-10 text-primary-green animate-fade-in-up delay-1">Handcrafted Bags</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Bag 1 -->
+                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-2 cursor-pointer"
+                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag1.jpeg"
+                         data-title="Elegant Bag 1"
+                         data-description="A stylish and functional bag, perfect for any occasion.">
+                        <div class="overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag1.jpeg" alt="Elegant Bag 1" class="product-card-image">
+                        </div>
+                        <div class="product-card-overlay text-white">
+                            <h4 class="font-poppins text-xl font-bold mb-1">Elegant Bag 1</h4>
+                        </div>
                     </div>
-                    <div class="product-card-overlay text-white">
-                        <h4 class="font-merriweather text-xl font-bold mb-1">Elegant Bag 1</h4>
+                    <!-- Bag 2 -->
+                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-3 cursor-pointer"
+                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag2.jpeg"
+                         data-title="Chic Bag 2"
+                         data-description="A sophisticated bag, handcrafted with premium materials.">
+                        <div class="overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag2.jpeg" alt="Chic Bag 2" class="product-card-image">
+                        </div>
+                        <div class="product-card-overlay text-white">
+                            <h4 class="font-poppins text-xl font-bold mb-1">Chic Bag 2</h4>
+                        </div>
+                    </div>
+                    <!-- Bag 3 -->
+                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-4 cursor-pointer"
+                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag3.jpeg"
+                         data-title="Modern Bag 3"
+                         data-description="A versatile bag designed for both style and daily use.">
+                        <div class="overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag3.jpeg" alt="Modern Bag 3" class="product-card-image">
+                        </div>
+                        <div class="product-card-overlay text-white">
+                            <h4 class="font-poppins text-xl font-bold mb-1">Modern Bag 3</h4>
+                        </div>
+                    </div>
+                    <!-- Bag 4 -->
+                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-5 cursor-pointer"
+                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/philo2.jpg"
+                         data-title="Exclusive Bag 4"
+                         data-description="A unique and exclusive design, crafted for a standout look.">
+                        <div class="overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/philo2.jpg" alt="Exclusive Bag 4" class="product-card-image">
+                        </div>
+                        <div class="product-card-overlay text-white">
+                            <h4 class="font-poppins text-xl font-bold mb-1">Exclusive Bag 4</h4>
+                        </div>
                     </div>
                 </div>
-                <!-- Bag 2 -->
-                <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-3 cursor-pointer"
-                     data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag2.jpeg"
-                     data-title="Chic Bag 2"
-                     data-description="A sophisticated bag, handcrafted with premium materials.">
-                    <div class="overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag2.jpeg" alt="Chic Bag 2" class="product-card-image">
-                    </div>
-                    <div class="product-card-overlay text-white">
-                        <h4 class="font-merriweather text-xl font-bold mb-1">Chic Bag 2</h4>
+            </div>
+
+            <!-- Footwear Section -->
+            <div id="footwear" class="mb-24">
+                <h3 class="font-playfair-display text-3xl font-bold text-center mb-10 text-primary-green animate-fade-in-up delay-1">Elegance on Your Feet: Footwear</h3>
+
+                <!-- Shoes -->
+                <div class="mb-16">
+                    <h4 class="font-poppins text-2xl font-semibold text-center mb-8 animate-fade-in-up delay-1">Shoes</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Shoe 1 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-2 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe1.jpeg"
+                             data-title="Classic Leather Shoe"
+                             data-description="A sophisticated shoe designed for style, comfort, and durability.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe1.jpeg" alt="Shoe 1" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Classic Leather Shoe</h4>
+                            </div>
+                        </div>
+                        <!-- Shoe 2 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-3 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe2.jpeg"
+                             data-title="Modern Loafer"
+                             data-description="A modern shoe crafted for a perfect fit and elegant look.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe2.jpeg" alt="Shoe 2" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Modern Loafer</h4>
+                            </div>
+                        </div>
+                        <!-- Shoe 3 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-4 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe3.jpeg"
+                             data-title="Formal Dress Shoe"
+                             data-description="An elegant and durable shoe for both casual and formal wear.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe3.jpeg" alt="Shoe 3" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Formal Dress Shoe</h4>
+                            </div>
+                        </div>
+                        <!-- Shoe 4 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-5 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/philo.png"
+                             data-title="Versatile Oxford"
+                             data-description="A classic shoe that complements any outfit.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/philo.png" alt="Shoe 4" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Versatile Oxford</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- Bag 3 -->
-                <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-4 cursor-pointer"
-                     data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag3.jpeg"
-                     data-title="Modern Bag 3"
-                     data-description="A versatile bag designed for both style and daily use.">
-                    <div class="overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/bag3.jpeg" alt="Modern Bag 3" class="product-card-image">
-                    </div>
-                    <div class="product-card-overlay text-white">
-                        <h4 class="font-merriweather text-xl font-bold mb-1">Modern Bag 3</h4>
+                
+                <!-- Slippers & Sandals -->
+                <div class="mt-24">
+                    <h4 class="font-poppins text-2xl font-semibold text-center mb-8 text-primary-green animate-fade-in-up delay-1">Slippers & Sandals</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Slipper 1 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-2 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper1.jpeg"
+                             data-title="Comfort Slipper"
+                             data-description="A comfortable and stylish slipper from our collection, perfect for everyday wear.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper1.jpeg" alt="Slipper 1" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Comfort Slipper</h4>
+                            </div>
+                        </div>
+                        <!-- Slipper 2 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-3 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper2.jpeg"
+                             data-title="Casual Slipper"
+                             data-description="A comfortable and stylish slipper from our collection, perfect for everyday wear.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper2.jpeg" alt="Slipper 2" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Casual Slipper</h4>
+                            </div>
+                        </div>
+                        <!-- Slipper 3 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-4 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper3.jpeg"
+                             data-title="Modern Slipper"
+                             data-description="A comfortable and stylish slipper from our collection, perfect for everyday wear.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper3.jpeg" alt="Slipper 3" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Modern Slipper</h4>
+                            </div>
+                        </div>
+                        <!-- Sandal 1 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-5 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal1.jpeg"
+                             data-title="Elegant Sandal"
+                             data-description="A stylish and comfortable sandal from our collection, perfect for a casual look.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal1.jpeg" alt="Sandal 1" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Elegant Sandal</h4>
+                            </div>
+                        </div>
+                        <!-- Sandal 2 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-6 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal2.jpeg"
+                             data-title="Summer Sandal"
+                             data-description="A stylish and comfortable sandal from our collection, perfect for a casual look.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal2.jpeg" alt="Sandal 2" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Summer Sandal</h4>
+                            </div>
+                        </div>
+                        <!-- Sandal 3 -->
+                        <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-7 cursor-pointer"
+                             data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal3.jpeg"
+                             data-title="Comfort Fit Sandal"
+                             data-description="A stylish and comfortable sandal from our collection, perfect for a casual look.">
+                            <div class="overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal3.jpeg" alt="Sandal 3" class="product-card-image">
+                            </div>
+                            <div class="product-card-overlay text-white">
+                                <h4 class="font-poppins text-xl font-bold mb-1">Comfort Fit Sandal</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- Bag 4 -->
-                <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-5 cursor-pointer"
-                     data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/philo2.jpg"
-                     data-title="Exclusive Bag 4"
-                     data-description="A unique and exclusive design, crafted for a standout look.">
-                    <div class="overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/philo2.jpg" alt="Exclusive Bag 4" class="product-card-image">
+            </div>
+
+            <!-- Fabrics Section -->
+            <div id="fabrics" class="mb-24">
+                <h3 class="font-playfair-display text-3xl font-bold text-center mb-10 text-primary-green animate-fade-in-up delay-1">Premium Fabrics</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Fabric 1 -->
+                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-2 cursor-pointer"
+                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric1.jpg"
+                         data-title="Exquisite Fabric 1"
+                         data-description="A premium, high-quality fabric perfect for custom garments that demand attention and comfort.">
+                        <div class="overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric1.jpg" alt="Exquisite Fabric 1" class="product-card-image">
+                        </div>
+                        <div class="product-card-overlay text-white">
+                            <h4 class="font-poppins text-xl font-bold mb-1">Exquisite Fabric 1</h4>
+                        </div>
                     </div>
-                    <div class="product-card-overlay text-white">
-                        <h4 class="font-merriweather text-xl font-bold mb-1">Exclusive Bag 4</h4>
+                    <!-- Fabric 2 -->
+                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-3 cursor-pointer"
+                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric2.jpeg"
+                         data-title="Elegant Fabric 2"
+                         data-description="A premium, high-quality fabric perfect for custom garments that demand attention and comfort.">
+                        <div class="overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric2.jpeg" alt="Elegant Fabric 2" class="product-card-image">
+                        </div>
+                        <div class="product-card-overlay text-white">
+                            <h4 class="font-poppins text-xl font-bold mb-1">Elegant Fabric 2</h4>
+                        </div>
+                    </div>
+                    <!-- Fabric 3 -->
+                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-4 cursor-pointer"
+                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric3.jpeg"
+                         data-title="Chic Fabric 3"
+                         data-description="A premium, high-quality fabric perfect for custom garments that demand attention and comfort.">
+                        <div class="overflow-hidden">
+                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric3.jpeg" alt="Chic Fabric 3" class="product-card-image">
+                        </div>
+                        <div class="product-card-overlay text-white">
+                            <h4 class="font-poppins text-xl font-bold mb-1">Chic Fabric 3</h4>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footwear Section -->
-        <section id="footwear" class="mb-32">
-            <h2 class="font-merriweather text-4xl md:text-5xl font-bold text-center mb-16 animate-fade-in-up">Elegance on Your Feet: Footwear</h2>
-
-            <!-- Shoes -->
-            <div class="mb-16">
-                <h3 class="font-merriweather text-3xl font-bold text-center mb-10 animate-fade-in-up delay-1">Shoes</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-                    <!-- Shoe 1 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-2 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe1.jpeg"
-                         data-title="Shoe 1"
-                         data-description="A sophisticated shoe designed for style, comfort, and durability.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe1.jpeg" alt="Shoe 1" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Shoe 1</h4>
-                        </div>
-                    </div>
-                    <!-- Shoe 2 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-3 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe2.jpeg"
-                         data-title="Shoe 2"
-                         data-description="A modern shoe crafted for a perfect fit and elegant look.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe2.jpeg" alt="Shoe 2" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Shoe 2</h4>
-                        </div>
-                    </div>
-                    <!-- Shoe 3 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-4 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe3.jpeg"
-                         data-title="Shoe 3"
-                         data-description="An elegant and durable shoe for both casual and formal wear.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/shoe3.jpeg" alt="Shoe 3" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Shoe 3</h4>
-                        </div>
-                    </div>
-                    <!-- Shoe 4 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-5 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/philo.png"
-                         data-title="Shoe 4"
-                         data-description="A classic shoe that complements any outfit.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/philo.png" alt="Shoe 4" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Shoe 4</h4>
-                        </div>
-                    </div>
+        <!-- === Fashion Sewing Training Section === -->
+        <section id="training" class="bg-gray-100 py-24 rounded-xl shadow-lg mb-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="font-playfair-display text-4xl md:text-5xl font-bold mb-8 text-primary-green animate-fade-in-up">Fashion Sewing Training</h2>
+                <p class="text-lg md:text-xl max-w-4xl mx-auto mb-12 text-gray-700 animate-fade-in-up delay-1">
+                    Learn African-inspired fashion sewing techniques through our hands-on courses. Whether you’re just starting or advancing your skills, our training programs are designed to empower you.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-3xl mx-auto mb-12">
+                    <ul class="list-none p-0 m-0 space-y-4 text-lg text-gray-800">
+                        <li class="flex items-center animate-fade-in-up delay-2"><i class="fas fa-level-up-alt text-accent-gold mr-3 text-2xl"></i> Beginner to advanced skill levels</li>
+                        <li class="flex items-center animate-fade-in-up delay-3"><i class="fas fa-ruler-combined text-accent-gold mr-3 text-2xl"></i> Pattern drafting & cutting</li>
+                    </ul>
+                    <ul class="list-none p-0 m-0 space-y-4 text-lg text-gray-800">
+                        <li class="flex items-center animate-fade-in-up delay-4"><i class="fas fa-award text-accent-gold mr-3 text-2xl"></i> Certification on completion</li>
+                        <li class="flex items-center animate-fade-in-up delay-5"><i class="fas fa-users text-accent-gold mr-3 text-2xl"></i> Small group, personalized coaching</li>
+                    </ul>
                 </div>
-            </div>
-            
-            <!-- Slippers & Sandals -->
-            <div class="mt-24">
-                <h3 class="font-merriweather text-3xl font-bold text-center mb-10 animate-fade-in-up delay-1">Slippers & Sandals</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-                    <!-- Slipper 1 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-2 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper1.jpeg"
-                         data-title="Slipper 1"
-                         data-description="A comfortable and stylish slipper from our collection, perfect for everyday wear.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper1.jpeg" alt="Slipper 1" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Slipper 1</h4>
-                        </div>
-                    </div>
-                    <!-- Slipper 2 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-3 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper2.jpeg"
-                         data-title="Slipper 2"
-                         data-description="A comfortable and stylish slipper from our collection, perfect for everyday wear.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper2.jpeg" alt="Slipper 2" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Slipper 2</h4>
-                        </div>
-                    </div>
-                    <!-- Slipper 3 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-4 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper3.jpeg"
-                         data-title="Slipper 3"
-                         data-description="A comfortable and stylish slipper from our collection, perfect for everyday wear.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/slipper3.jpeg" alt="Slipper 3" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Slipper 3</h4>
-                        </div>
-                    </div>
-                    <!-- Sandal 1 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-5 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal1.jpeg"
-                         data-title="Sandal 1"
-                         data-description="A stylish and comfortable sandal from our collection, perfect for a casual look.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal1.jpeg" alt="Sandal 1" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Sandal 1</h4>
-                        </div>
-                    </div>
-                    <!-- Sandal 2 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-6 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal2.jpeg"
-                         data-title="Sandal 2"
-                         data-description="A stylish and comfortable sandal from our collection, perfect for a casual look.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal2.jpeg" alt="Sandal 2" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Sandal 2</h4>
-                        </div>
-                    </div>
-                    <!-- Sandal 3 -->
-                    <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-7 cursor-pointer"
-                         data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal3.jpeg"
-                         data-title="Sandal 3"
-                         data-description="A stylish and comfortable sandal from our collection, perfect for a casual look.">
-                        <div class="overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/sandal3.jpeg" alt="Sandal 3" class="product-card-image">
-                        </div>
-                        <div class="product-card-overlay text-white">
-                            <h4 class="font-merriweather text-xl font-bold mb-1">Sandal 3</h4>
-                        </div>
-                    </div>
-                </div>
+                <a href="https://wa.me/2347067325928?text=Hello,%20I%20am%20interested%20in%20your%20Fashion%20Sewing%20Training%20programs." class="btn btn-primary animate-fade-in-up delay-6">Join on WhatsApp</a>
             </div>
         </section>
 
-        <!-- Fabrics Section -->
-        <section id="fabrics" class="mb-32">
-            <h2 class="font-merriweather text-4xl md:text-5xl font-bold text-center mb-16 animate-fade-in-up">Premium Fabrics</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-                <!-- Fabric 1 -->
-                <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-2 cursor-pointer"
-                     data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric1.jpg"
-                     data-title="Exquisite Fabric 1"
-                     data-description="A premium, high-quality fabric perfect for custom garments that demand attention and comfort.">
-                    <div class="overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric1.jpg" alt="Exquisite Fabric 1" class="product-card-image">
+        <!-- === Crafted with Love Section (from previous iteration, fits well here) === -->
+        <section id="our-passion" class="bg-gradient-to-r from-yellow-500 to-amber-600 text-white py-24 rounded-xl shadow-2xl mb-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="font-playfair-display text-4xl md:text-5xl font-extrabold mb-8 animate-fade-in-up">Crafted with Love, Worn with Joy</h2>
+                <p class="text-xl md:text-2xl max-w-4xl mx-auto mb-12 animate-fade-in-up delay-1">
+                    At Mosphil, our passion is woven into every thread, stitched into every seam, and molded into every sole. We believe that true style comes from the heart, and we pour our dedication into creating pieces that not only look exquisite but also make you feel exceptional.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="animate-fade-in-up delay-2">
+                        <i class="fas fa-heart text-5xl mb-4 text-white"></i>
+                        <h3 class="font-poppins text-2xl font-bold mb-2">Passion for Fabric</h3>
+                        <p class="text-lg">Selecting only the finest materials, our fabrics are chosen for their quality, comfort, and timeless beauty.</p>
                     </div>
-                    <div class="product-card-overlay text-white">
-                        <h4 class="font-merriweather text-xl font-bold mb-1">Exquisite Fabric 1</h4>
+                    <div class="animate-fade-in-up delay-3">
+                        <i class="fas fa-tshirt text-5xl mb-4 text-white"></i>
+                        <h3 class="font-poppins text-2xl font-bold mb-2">Artistry in Ready-to-Wear</h3>
+                        <p class="text-lg">Each garment is a masterpiece, designed and sewn with meticulous attention to detail and modern elegance.</p>
                     </div>
-                </div>
-                <!-- Fabric 2 -->
-                <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-3 cursor-pointer"
-                     data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric2.jpeg"
-                     data-title="Elegant Fabric 2"
-                     data-description="A premium, high-quality fabric perfect for custom garments that demand attention and comfort.">
-                    <div class="overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric2.jpeg" alt="Elegant Fabric 2" class="product-card-image">
+                    <div class="animate-fade-in-up delay-4">
+                        <i class="fas fa-shoe-prints text-5xl mb-4 text-white"></i>
+                        <h3 class="font-poppins text-2xl font-bold mb-2">Footwear with Soul</h3>
+                        <p class="text-lg">Our shoes are crafted for both style and comfort, ensuring every step you take is a confident one.</p>
                     </div>
-                    <div class="product-card-overlay text-white">
-                        <h4 class="font-merriweather text-xl font-bold mb-1">Elegant Fabric 2</h4>
-                    </div>
-                </div>
-                <!-- Fabric 3 -->
-                <div class="product-card relative rounded-lg shadow-xl overflow-hidden animate-fade-in-up delay-4 cursor-pointer"
-                     data-image-src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric3.jpeg"
-                     data-title="Chic Fabric 3"
-                     data-description="A premium, high-quality fabric perfect for custom garments that demand attention and comfort.">
-                    <div class="overflow-hidden">
-                        <img src="https://raw.githubusercontent.com/OBAUDE95/Mosphil_Fashion/main/fabric3.jpeg" alt="Chic Fabric 3" class="product-card-image">
-                    </div>
-                    <div class="product-card-overlay text-white">
-                        <h4 class="font-merriweather text-xl font-bold mb-1">Chic Fabric 3</h4>
+                    <div class="animate-fade-in-up delay-5">
+                        <i class="fas fa-graduation-cap text-5xl mb-4 text-white"></i>
+                        <h3 class="font-poppins text-2xl font-bold mb-2">Empowering Through Training</h3>
+                        <p class="text-lg">We share our expertise, nurturing the next generation of fashion artisans with comprehensive training programs.</p>
                     </div>
                 </div>
+                <p class="text-xl md:text-2xl max-w-4xl mx-auto mt-12 animate-fade-in-up delay-6">
+                    Thank you for choosing Mosphil. We are dedicated to bringing you products and experiences that you will truly love.
+                </p>
             </div>
         </section>
 
@@ -391,17 +513,7 @@
     <!-- === Footer === -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-6 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-                <div class="mb-4 md:mb-0">
-                    <h3 class="font-merriweather text-2xl font-bold text-accent">Mosphil Academy</h3>
-                    <p class="text-gray-400 text-sm">&copy; 2024. All Rights Reserved.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-xl hover:text-accent transition-colors duration-300"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-xl hover:text-accent transition-colors duration-300"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-xl hover:text-accent transition-colors duration-300"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+            <p class="text-gray-400 text-sm font-poppins">&copy; 2025 Mosphil Fashion Academy. All rights reserved.</p>
         </div>
     </footer>
 
@@ -419,10 +531,10 @@
                     <img id="modal-image" src="" alt="Enlarged product view" class="w-full h-auto rounded-lg shadow-lg">
                 </div>
                 <div class="lg:w-1/2 flex-grow flex flex-col justify-center text-center lg:text-left">
-                    <h3 id="modal-title" class="font-merriweather text-4xl font-bold mb-4">Product Title</h3>
-                    <p id="modal-description" class="text-lg text-gray-600 mb-8">Product Description</p>
-                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="inline-block w-full lg:w-auto text-center bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                        Enquire about this Item
+                    <h3 id="modal-title" class="font-playfair-display text-4xl font-bold mb-4">Product Title</h3>
+                    <p id="modal-description" class="text-lg text-gray-600 mb-8 font-poppins">Product Description</p>
+                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="btn btn-primary w-full lg:w-auto text-center">
+                        Enquire on WhatsApp
                     </a>
                 </div>
             </div>
@@ -451,7 +563,9 @@
                     const imageSrc = this.getAttribute('data-image-src');
                     const title = this.getAttribute('data-title');
                     const description = this.getAttribute('data-description');
-                    const whatsappLink = `https://wa.me/2347067325928?text=Hello,%20I%20am%20interested%20in%20the%20${encodeURIComponent(title)}.%20Can%20you%20please%20provide%20more%20details?`;
+                    // Ensure the WhatsApp number is correct for your use case
+                    const whatsappNumber = '2347067325928'; 
+                    const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello,%20I%20am%20interested%20in%20the%20${encodeURIComponent(title)}%20(${encodeURIComponent(description)}).%20Can%20you%20please%20provide%20more%20details?`;
                     
                     modalImage.src = imageSrc;
                     modalTitle.textContent = title;
